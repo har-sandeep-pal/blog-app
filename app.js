@@ -5,6 +5,20 @@ const logger = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+const mongoose = require("mongoose");
+const config = require("./config/database");
+
+mongoose.connect(config.database, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function() {
+  console.log(`database connection established successfully...`);
+});
 
 const app = express();
 
