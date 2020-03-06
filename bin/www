@@ -1,9 +1,7 @@
 const app = require("../app");
 const debug = require("debug")("blog-app:server");
 const http = require("http");
-const dotenv = require("dotenv");
-
-dotenv.config();
+require("dotenv").config();
 
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);

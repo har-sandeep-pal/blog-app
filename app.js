@@ -1,10 +1,10 @@
 const createError = require("http-errors");
 const express = require("express");
-const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 
@@ -17,7 +17,7 @@ const usersRouter = require("./routes/users");
  * CORS options
  */
 const corsOptions = {
-  origin: "http://localhost:3000/",
+  origin: process.envFRONTEND_URL,
   optionsSuccessStatus: 200
 };
 
